@@ -30,12 +30,6 @@ Main features included by default:
 
 There is an user example ready to use to login with email `user@example.com` and password `123456789`.
 
-![Login Page](app/assets/images/screenshot1.png)
-Login page.
-
-![Dashboard Page](app/assets/images/screenshot2.png)
-Dashboard page.
-
 Original author
 ---------------
 
