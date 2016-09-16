@@ -45,7 +45,7 @@ To start using this template, you only have to do the typical ***Rails*** things
 * Clone the repo and do the ***bundle install*** thing:
 
 ```sh
-user@computer:~$ git clone git@github.com:dreamingechoes/rails-blank-template-app.git YOUR_APP_NAME_HERE
+user@computer:~$ git clone git@github.com:dreamingechoes/selenium-test-panel.git YOUR_APP_NAME_HERE
 user@computer:~$ cd YOUR_APP_NAME_HERE
 user@computer:/YOUR_APP_NAME_HERE$ bundle install
 user@computer:/YOUR_APP_NAME_HERE$ rake db:setup
