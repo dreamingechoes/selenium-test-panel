@@ -27,6 +27,7 @@ class CaseTestsController < ApplicationController
   # GET /case_tests/new
   def new
     @case_test = CaseTest.new
+    @case_test.steps.build
   end
 
   # GET /case_tests/1/edit
@@ -73,6 +74,17 @@ class CaseTestsController < ApplicationController
     end
   end
 
+  # Run CaseTest action
+  def run
+    @case_test = CaseTest.find(params[:case_test_id])
+    SeleniumTester::Base.new(@case_test)
+    @case_test.update_attribute(:last_execution, Time.now)
+
+    respond_to do |format|
+      format.html { redirect_to @case_test, notice: 'Case test was successfully executed.' }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_case_test
@@ -81,6 +93,9 @@ class CaseTestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def case_test_params
-      params.require(:case_test).permit(:title, :description, :url, :timestamps)
+      params.require(:case_test).permit(:title, :description, :url, :timestamps,
+                                        steps_attributes: [:id, :step_number, :kind, :selector,
+                                                           :script_code, :response, :store_datalayer,
+                                                           :datalayer, :_destroy])
     end
 end
