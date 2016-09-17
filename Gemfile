@@ -15,6 +15,7 @@ gem 'sendgrid'
 gem 'thin'
 gem 'seed_dump'
 gem 'bootstrap_sb_admin_base_v2'
+gem 'selenium-webdriver'
 
 group :development do
   gem 'better_errors'
