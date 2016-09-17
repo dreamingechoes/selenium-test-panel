@@ -1,0 +1,39 @@
+<% content_for(:page_header) do %>
+  <%= "List of configuration elements" %>
+<% end %>
+<% content_for :panel_heading do %>Content<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<table id="config_elements" class="display table" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th colspan="1">Key</th>
+      <th colspan="1">Value</th>
+      <th colspan="1">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @config_elements.each do |config_element| %>
+      <tr>
+        <td><%= config_element.title %></td>
+        <td><%= config_element.url %></td>
+        <td><%= config_element.created_at %></td>
+        <td class="action-buttons">
+          <%= link_to 'Show', config_element, class: 'btn btn-success' %>
+          <%= link_to 'Edit', edit_config_element_path(config_element), class: 'btn btn-primary' %>
+          <%= link_to 'Destroy', config_element, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for(:extra_scripts) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#config_elements').DataTable({ responsive: true });
+    });
+  </script>
+<% end %>

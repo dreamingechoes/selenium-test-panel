@@ -1,0 +1,14 @@
+<% content_for(:page_header) do %>
+  <%= "Config Element" %>
+<% end %>
+<% content_for :panel_heading do %>Config Element: <%= @config_element.key %><% end %>
+
+<p>
+  <strong>Key:</strong>
+  <%= @config_element.key %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @config_element.value %>
+</p>

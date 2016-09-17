@@ -1,0 +1,6 @@
+<% content_for(:page_header) do %>
+  <%= "Edit Config Element" %>
+<% end %>
+<% content_for :panel_heading do %>Edit Config Element: <%= @config_element.key %><% end %>
+
+<%= render 'form' %>

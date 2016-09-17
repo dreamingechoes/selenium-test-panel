@@ -1,0 +1,1 @@
+json.array! @config_elements, partial: 'config_elements/config_element', as: :config_element
