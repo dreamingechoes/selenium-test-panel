@@ -58,8 +58,8 @@ The free account has some free uses, but it's preferible to get an `Automate` or
 
 Once you have this  automate `username` and `acces_key`, just go to the `Configurations` section and create two elements:
 
-**browserstack_username**: your BrowserStack automate `username`.
-**browserstack_key**: your BrowserStack automate `acces_key`.
+* **browserstack_username**: your BrowserStack automate `username`.
+* **browserstack_key**: your BrowserStack automate `acces_key`.
 
 And you're ready to go, start creating `CaseTests` to run.
 
