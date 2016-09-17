@@ -3,7 +3,7 @@ class CaseTestsController < ApplicationController
 
   def search
     if params[:q].present?
-      @case_tests = CaseTest.where("title LIKE '%#{params[:q]}%'")
+      @case_tests = CaseTest.where("upper(title) LIKE '%#{params[:q].upcase}%'")
     end
     render :index
   end
@@ -71,12 +71,22 @@ class CaseTestsController < ApplicationController
 
   # Run CaseTest action
   def run
-    @case_test = CaseTest.find(params[:case_test_id])
-    SeleniumTester::Base.new(@case_test)
-    @case_test.update_attribute(:last_execution, Time.now)
+    execution_error = false
+    begin
+      @case_test = CaseTest.find(params[:case_test_id])
+      SeleniumTester::Base.new(@case_test)
+      @case_test.update_attribute(:last_execution, Time.now)
+    rescue Exception => e
+      Rails.logger.info "[EXCEPTION][ERROR]: #{e}"
+      execution_error = true
+    end
 
     respond_to do |format|
-      format.html { redirect_to @case_test, notice: 'Case test was successfully executed.' }
+      if execution_error
+        format.html { redirect_to @case_test, notice: 'Execution Error: Browserstack limit reached' }
+      else
+        format.html { redirect_to @case_test, notice: 'Case test was successfully executed.' }
+      end
     end
   end
 
