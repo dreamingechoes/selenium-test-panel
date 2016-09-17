@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :config_elements
   resources :case_tests do
     get :run
+    post :search, on: :collection
   end
 
   devise_for :users, only: :session, path: 'session',

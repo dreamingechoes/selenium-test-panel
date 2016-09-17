@@ -10,7 +10,7 @@
     <tr>
       <th colspan="1">Title</th>
       <th colspan="1">URL</th>
-      <th colspan="1">Date</th>
+      <th colspan="1">Last Execution</th>
       <th colspan="1">Actions</th>
     </tr>
   </thead>
@@ -20,7 +20,7 @@
       <tr>
         <td><%= case_test.title %></td>
         <td><%= case_test.url %></td>
-        <td><%= case_test.created_at %></td>
+        <td><%= case_test.last_execution %></td>
         <td class="action-buttons">
           <%= link_to 'Show', case_test, class: 'btn btn-success' %>
           <%= link_to 'Edit', edit_case_test_path(case_test), class: 'btn btn-primary' %>

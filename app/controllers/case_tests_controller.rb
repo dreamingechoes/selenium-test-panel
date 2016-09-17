@@ -1,6 +1,13 @@
 class CaseTestsController < ApplicationController
   before_action :set_case_test, only: [:show, :edit, :update, :destroy]
 
+  def search
+    if params[:q].present?
+      @case_tests = CaseTest.where("title LIKE '%#{params[:q]}%'")
+    end
+    render :index
+  end
+
   # GET /case_tests
   # GET /case_tests.json
   def index
@@ -10,18 +17,6 @@ class CaseTestsController < ApplicationController
   # GET /case_tests/1
   # GET /case_tests/1.json
   def show
-    # Just an example in order to test jquery.json-viewer capabilities
-    @json_object = {"menu": {
-                    "id": "file",
-                    "value": "File",
-                    "popup": {
-                      "menuitem": [
-                        {"value": "New", "onclick": "CreateNewDoc()"},
-                        {"value": "Open", "onclick": "OpenDoc()"},
-                        {"value": "Close", "onclick": "CloseDoc()"}
-                      ]
-                    }
-                  }}.to_json
   end
 
   # GET /case_tests/new

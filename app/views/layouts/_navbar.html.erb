@@ -30,7 +30,7 @@
     <div class="sidebar-nav navbar-collapse">
       <ul class="nav in" id="side-menu">
         <li class="sidebar-search">
-          <%= form_tag('') do %>
+          <%= form_tag(search_case_tests_path) do %>
             <div class="input-group custom-search-form">
               <%= text_field_tag :q, nil, class: "form-control", placeholder: "Search..." %>
                 <span class="input-group-btn">
