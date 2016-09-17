@@ -15,7 +15,10 @@ gem 'sendgrid'
 gem 'thin'
 gem 'seed_dump'
 gem 'bootstrap_sb_admin_base_v2'
+gem 'nested_form'
 gem 'selenium-webdriver'
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :development do
   gem 'better_errors'
@@ -43,7 +46,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'selenium-webdriver'
 end
 
 group :production do
