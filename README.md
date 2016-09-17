@@ -1,10 +1,7 @@
-Selenium Test Panel App
-========================
+Selenium Test Panel
+===================
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-About
------
 
 Just a simple (Work In Progress) proof of concept of an admin panel to create and automate tests with Selenium made with Ruby on Rails.
 
@@ -62,6 +59,15 @@ Once you have this  automate `username` and `acces_key`, just go to the `Configu
 * **browserstack_key**: your BrowserStack automate `acces_key`.
 
 And you're ready to go, start creating `CaseTests` to run.
+
+Additionally, if you plan to deploy this example on Heroku, you'll need to the set the AWS configuration variables:
+
+```
+$ heroku config:set S3_BUCKET_NAME=your_bucket_name
+$ heroku config:set AWS_ACCESS_KEY_ID=your_access_key_id
+$ heroku config:set AWS_SECRET_ACCESS_KEY=your_secret_access_key
+$ heroku config:set AWS_REGION=your_aws_region
+```
 
 Original author
 ---------------
