@@ -10,6 +10,7 @@
     <tr>
       <th colspan="1">Key</th>
       <th colspan="1">Value</th>
+      <th colspan="1">Date</th>
       <th colspan="1">Actions</th>
     </tr>
   </thead>
@@ -17,8 +18,8 @@
   <tbody>
     <% @config_elements.each do |config_element| %>
       <tr>
-        <td><%= config_element.title %></td>
-        <td><%= config_element.url %></td>
+        <td><%= config_element.key %></td>
+        <td><%= config_element.value %></td>
         <td><%= config_element.created_at %></td>
         <td class="action-buttons">
           <%= link_to 'Show', config_element, class: 'btn btn-success' %>
