@@ -1,5 +1,5 @@
 <% content_for(:page_header) do %>
-  <%= "Case Test" %>
+  <%= @case_test.title %>
 <% end %>
 <% content_for :panel_heading do %>Case Test: <%= @case_test.title %><% end %>
 
@@ -22,3 +22,31 @@
   <strong>Date:</strong>
   <%= @case_test.created_at %>
 </p>
+
+<p>
+  <textarea id="json-input" autocomplete="off" class="form-control hidden" rows="8">
+  <%= @json_object %>
+  </textarea>
+</p>
+
+<p>
+  <pre id="json-renderer"></pre>
+</p>
+
+<% content_for(:extra_scripts) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      try {
+        var input = eval('(' + $('#json-input').val() + ')');
+      }
+      catch (error) {
+        return alert("Cannot eval JSON: " + error);
+      }
+      var options = {
+        collapsed: false,
+        withQuotes: true
+      };
+      $('#json-renderer').jsonViewer(input, options);
+    });
+  </script>
+<% end %>
