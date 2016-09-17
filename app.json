@@ -1,0 +1,17 @@
+{
+  "name": "Selenium Test Panel",
+  "description": "Proof of concept of an admin panel to create and automate tests with Selenium made with Ruby on Rails",
+  "logo": "http://docs.seleniumhq.org/images/big-logo.png",
+  "repository": "https://github.com/dreamingechoes/selenium-test-panel",
+  "keywords": [
+    "starter",
+    "Ruby",
+    "Rails",
+    "Selenium",
+    "Test"
+  ],
+  "scripts": {},
+  "env": {
+    "RAILS_ENV": "production"
+  }
+}
