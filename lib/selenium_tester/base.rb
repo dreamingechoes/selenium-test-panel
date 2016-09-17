@@ -42,18 +42,17 @@ module SeleniumTester
           step.datalayer = step.parse_datalayer(@driver.execute_script('return dataLayer')) if step.store_datalayer
 
           # Take the website screenshot
-          file = Tempfile.new(@driver.save_screenshot('screenshot.png'))
-          step.screenshot = file
-          file.close
-          file.unlink
-
+          f = File.open(@driver.save_screenshot('tmp/screenshot.png')) do |f|
+            step.screenshot = f
+          end
           step.response = 'OK'
         rescue Exception => e
-          Rails.logger.info "EXCEPCION: #{e}"
+          Rails.logger.info "[EXCEPTION][ERROR]: #{e}"
           step.response = e
         ensure
           step.save
         end
+        File.delete(f)
       end
     end
 
