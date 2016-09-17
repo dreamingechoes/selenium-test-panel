@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917005225) do
+ActiveRecord::Schema.define(version: 20160917160445) do
 
   create_table "case_tests", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.string   "url",         limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title",          limit: 255
+    t.text     "description",    limit: 65535
+    t.string   "url",            limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.datetime "last_execution"
   end
 
   create_table "config_elements", force: :cascade do |t|
@@ -27,6 +28,25 @@ ActiveRecord::Schema.define(version: 20160917005225) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "steps", force: :cascade do |t|
+    t.integer  "step_number",             limit: 4
+    t.integer  "kind",                    limit: 4
+    t.string   "selector",                limit: 255
+    t.text     "script_code",             limit: 65535
+    t.text     "response",                limit: 65535
+    t.boolean  "store_datalayer"
+    t.text     "datalayer",               limit: 65535
+    t.integer  "case_test_id",            limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "screenshot_file_name",    limit: 255
+    t.string   "screenshot_content_type", limit: 255
+    t.integer  "screenshot_file_size",    limit: 4
+    t.datetime "screenshot_updated_at"
+  end
+
+  add_index "steps", ["case_test_id"], name: "index_steps_on_case_test_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
