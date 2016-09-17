@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    New Step
+  </div>
+
+  <div class="panel-body">
+    <div class="form-group">
+      <%= f.label :step_number %>
+      <%= f.number_field :step_number, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :kind %>
+      <%= f.select :kind, Step::AVAILABLE_KINDS.map{|key, value| [value, key] }, {prompt: 'Select an option'}, required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :selector %>
+      <%= f.text_field :selector, class: 'form-control', require: true %>
+      <p class="help-block">CSS selector of the element which execute the action.</p>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :script_code %>
+      <%= f.text_area :script_code, rows: 4, class: 'form-control' %>
+      <p class="help-block">JavaScript code to run if the selected kind is <i>ExecuteScript</i>.</p>
+    </div>
+
+    <div class="checkbox">
+      <%= f.label :store_datalayer do %>
+        <%= f.check_box :store_datalayer %> Store Datalayer
+      <% end %>
+      <p class="help-block">If this option is checked, Javascript <i>dataLayer</i> will be stored on database.</p>
+    </div>
+
+    <div class="checkbox">
+      <%= f.label :_destroy do %>
+        <%= f.check_box :_destroy %> Delete Step
+      <% end %>
+      <p class="help-block">Warning: this will delete all data of the step.</p>
+    </div>
+
+  </div>
+</div>

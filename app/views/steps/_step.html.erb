@@ -1,0 +1,79 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#step_<%= step.step_number %>">
+        Step #<%= step.step_number %>
+      </a>
+    </h4>
+  </div>
+
+  <div id="step_<%= step.step_number %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+      <p>
+        <strong>Kind:</strong>
+        <%= step.get_step_kind %>
+      </p>
+
+      <p>
+        <strong>Selector:</strong>
+        <%= step.selector %>
+      </p>
+
+      <p>
+        <strong>Response:</strong>
+        <%= step.response %>
+      </p>
+
+      <% unless step.script_code.blank? %>
+        <p>
+          <strong>Script Code:</strong>
+          <%= step.script_code %>
+        </p>
+      <% end %>
+
+      <p>
+        <strong>Store Datalayer:</strong>
+        <%= step.store_datalayer %>
+      </p>
+
+      <% if step.screenshot.present? %>
+        <p>
+          <strong>Screenshot:</strong>
+          <br>
+          <%= image_tag step.screenshot(:medium), class: 'screenshot' %>
+        </p>
+      <% end %>
+
+      <% if step.store_datalayer? %>
+        <p>
+          <strong>dataLayer:</strong>
+          <textarea id="json-input" class="hidden">
+            <%= step.load_datalayer %>
+          </textarea>
+          <p>
+            <pre id="json-renderer"></pre>
+          </p>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+<% content_for(:extra_scripts) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      try {
+        var input = eval('(' + $('#json-input').val() + ')');
+      }
+      catch (error) {
+        return alert("Cannot eval JSON: " + error);
+      }
+      var options = {
+        collapsed: false,
+        withQuotes: true
+      };
+      $('#json-renderer').jsonViewer(input, options);
+    });
+  </script>
+<% end %>
