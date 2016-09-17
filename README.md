@@ -1,20 +1,12 @@
 Selenium Test Panel App
 ========================
 
-Ruby on Rails
--------------
-
-This application requires:
-
-- Ruby 2.3.0
-- Rails 4.2.7.1
-
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 About
 -----
 
-This is a simple Selenium Test Panel App in order to be able to just simply clone it and start to develop our own app.
+Just a simple (Work In Progress) proof of concept of an admin panel to create and automate tests with Selenium made with Ruby on Rails.
 
 It uses the Bootstrap SB Admin Base V2 theme. You could find the Rails gem of this theme [here](https://github.com/dreamingechoes/bootstrap_sb_admin_base_v2).
 
@@ -30,10 +22,15 @@ Main features included by default:
 
 There is an user example ready to use to login with email `user@example.com` and password `123456789`.
 
-Original author
----------------
+Ruby on Rails
+-------------
 
-Iván González, *a.k.a* [dreamingechoes](https://github.com/dreamingechoes)
+This application requires:
+
+- Ruby 2.3.0
+- Rails 4.2.7.1
+
+Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
 Getting Started
 ---------------
@@ -52,7 +49,24 @@ user@computer:/YOUR_APP_NAME_HERE$ rake db:setup
 user@computer:/YOUR_APP_NAME_HERE$ rake db:seed
 ```
 
-And you're ready to go. Test if all it's ok by starting a server and check it with `rails s`.
+Usage
+-----
+
+This proof of concept uses the automate capabilities of [BrowserStack](https://www.browserstack.com) to execute the Selenium tests on the cloud, so we don't need to execute it locally. Because of that, first of all you will need a [BrowserStack](https://www.browserstack.com/users/sign_up) account in order to be able to get your automate `username` and `access_key`.
+
+The free account has some free uses, but it's preferible to get an `Automate` or `Automate Pro` plan if you want to do heavy testing.
+
+Once you have this  automate `username` and `acces_key`, just go to the `Configurations` section and create two elements:
+
+**browserstack_username**: your BrowserStack automate `username`.
+**browserstack_key**: your BrowserStack automate `acces_key`.
+
+And you're ready to go, start creating `CaseTests` to run.
+
+Original author
+---------------
+
+Iván González, *a.k.a* [dreamingechoes](https://github.com/dreamingechoes)
 
 Contributing
 ------------
