@@ -10,6 +10,18 @@ class CaseTestsController < ApplicationController
   # GET /case_tests/1
   # GET /case_tests/1.json
   def show
+    # Just an example in order to test jquery.json-viewer capabilities
+    @json_object = {"menu": {
+                    "id": "file",
+                    "value": "File",
+                    "popup": {
+                      "menuitem": [
+                        {"value": "New", "onclick": "CreateNewDoc()"},
+                        {"value": "Open", "onclick": "OpenDoc()"},
+                        {"value": "Close", "onclick": "CloseDoc()"}
+                      ]
+                    }
+                  }}.to_json
   end
 
   # GET /case_tests/new
