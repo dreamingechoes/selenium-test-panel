@@ -7,10 +7,8 @@ module SeleniumTester
     def initialize(case_test)
       @case_test = case_test
       @driver = init_client
-    end
-
-    def end_session
-      @driver.quit
+      run_steps
+      end_session
     end
 
     private def capabilities
@@ -33,6 +31,35 @@ module SeleniumTester
         :desired_capabilities => capabilities)
     end
 
+    private def run_steps
+      # Navigate to the CaseTest URL
+      @driver.navigate.to(@case_test.url)
+
+      # TODO: Complete this process
+      # Iterate through the steps and execute them
+      @case_test.steps.each do |step|
+        begin
+          step.datalayer = step.parse_datalayer(@driver.execute_script('return dataLayer')) if step.store_datalayer
+
+          # Take the website screenshot
+          file = Tempfile.new(@driver.save_screenshot('screenshot.png'))
+          step.screenshot = file
+          file.close
+          file.unlink
+
+          step.response = 'OK'
+        rescue Exception => e
+          Rails.logger.info "EXCEPCION: #{e}"
+          step.response = e
+        ensure
+          step.save
+        end
+      end
+    end
+
+    private def end_session
+      @driver.quit
+    end
   end
 
 end
