@@ -15,3 +15,12 @@
 //= require bootstrap_sb_admin_base_v2
 //= require jquery_nested_form
 //= require_tree .
+
+$(document).ready(function() {
+
+  // Create overlay when press 'Run Now' button
+  $('#run-test').on('click', function() {
+    $('body').prepend('<div class="loading">Loading&#8230;</div>');
+  });
+
+});
