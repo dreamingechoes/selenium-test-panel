@@ -1,0 +1,24 @@
+<% content_for(:page_header) do %>
+  <%= "Case Test" %>
+<% end %>
+<% content_for :panel_heading do %>Case Test: <%= @case_test.title %><% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @case_test.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @case_test.description %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= link_to @case_test.url %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @case_test.created_at %>
+</p>

@@ -1,0 +1,40 @@
+<% content_for(:page_header) do %>
+  <%= "List of case tests" %>
+<% end %>
+<% content_for :panel_heading do %>Content<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<table id="case_tests" class="display table" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th colspan="1">Title</th>
+      <th colspan="1">URL</th>
+      <th colspan="1">Date</th>
+      <th colspan="1">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @case_tests.each do |case_test| %>
+      <tr>
+        <td><%= case_test.title %></td>
+        <td><%= case_test.url %></td>
+        <td><%= case_test.created_at %></td>
+        <td class="action-buttons">
+          <%= link_to 'Show', case_test, class: 'btn btn-success' %>
+          <%= link_to 'Edit', edit_case_test_path(case_test), class: 'btn btn-primary' %>
+          <%= link_to 'Destroy', case_test, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for(:extra_scripts) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#case_tests').DataTable({ responsive: true });
+    });
+  </script>
+<% end %>

@@ -1,0 +1,35 @@
+<%= form_for(@case_test, role: :form) do |f| %>
+  <% if @case_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@case_test.errors.count, "error") %> prohibited this case_test from being saved:</h2>
+
+      <ul>
+      <% @case_test.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', required: true %>
+    <p class="help-block">Title of the case test.</p>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :url %>
+    <%= f.text_field :url, class: 'form-control', required: true %>
+    <p class="help-block">URL of the case test.</p>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', rows: 8, required: true %>
+    <p class="help-block">Description of the case test.</p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'btn btn-success' %>
+  </div>
+<% end %>
