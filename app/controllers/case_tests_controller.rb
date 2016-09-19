@@ -83,7 +83,7 @@ class CaseTestsController < ApplicationController
 
     respond_to do |format|
       if execution_error
-        format.html { redirect_to @case_test, notice: 'Execution Error: Browserstack limit reached' }
+        format.html { redirect_to @case_test, notice: 'Execution Error: read application log for more info.' }
       else
         format.html { redirect_to @case_test, notice: 'Case test was successfully executed.' }
       end
