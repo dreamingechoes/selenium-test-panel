@@ -3,7 +3,7 @@ Selenium Test Panel
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-Just a simple (Work In Progress) proof of concept of an admin panel to create and automate tests with Selenium made with Ruby on Rails.
+Just a simple (Work In Progress) proof of concept of an admin panel to create and automate tests with Selenium, made with Ruby on Rails.
 
 It uses the Bootstrap SB Admin Base V2 theme. You could find the Rails gem of this theme [here](https://github.com/dreamingechoes/bootstrap_sb_admin_base_v2).
 
@@ -32,18 +32,18 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 Getting Started
 ---------------
 
-To start using this template, you only have to do the typical ***Rails*** things:
+To start using this project, you only have to do the typical ***Rails*** things:
 
 * Install ***Ruby*** version 2.3.0 (using [RVM](https://github.com/rvm/rvm) or [RBenv](https://github.com/sstephenson/rbenv) or whatever).
 
 * Clone the repo and do the ***bundle install*** thing:
 
 ```sh
-user@computer:~$ git clone git@github.com:dreamingechoes/selenium-test-panel.git YOUR_APP_NAME_HERE
-user@computer:~$ cd YOUR_APP_NAME_HERE
-user@computer:/YOUR_APP_NAME_HERE$ bundle install
-user@computer:/YOUR_APP_NAME_HERE$ rake db:setup
-user@computer:/YOUR_APP_NAME_HERE$ rake db:seed
+user@computer:~$ git clone git@github.com:dreamingechoes/selenium-test-panel.git selenium-test-panel
+user@computer:~$ cd selenium-test-panel
+user@computer:/selenium-test-panel$ bundle install
+user@computer:/selenium-test-panel$ rake db:setup
+user@computer:/selenium-test-panel$ rake db:seed
 ```
 
 Usage
@@ -51,16 +51,16 @@ Usage
 
 This proof of concept uses the automate capabilities of [BrowserStack](https://www.browserstack.com) to execute the Selenium tests on the cloud, so we don't need to execute it locally. Because of that, first of all you will need a [BrowserStack](https://www.browserstack.com/users/sign_up) account in order to be able to get your automate `username` and `access_key`.
 
-The free account has some free uses, but it's preferible to get an `Automate` or `Automate Pro` plan if you want to do heavy testing.
+The free account has some free uses (about 100 minutes of executions), but it's more convenient to get an `Automate` or `Automate Pro` plan if you want to do heavy testing.
 
-Once you have this  automate `username` and `acces_key`, just go to the `Configurations` section and create two elements:
+Once you have this  automate `username` and `acces_key`, just go to the `Configurations` section and complete this two elements:
 
 * **browserstack_username**: your BrowserStack automate `username`.
 * **browserstack_key**: your BrowserStack automate `acces_key`.
 
 And you're ready to go, start creating `CaseTests` to run.
 
-Additionally, if you plan to deploy this example on Heroku, you'll need to the set the AWS configuration variables:
+Additionally, if you plan to deploy this example on Heroku, you'll need to set the AWS configuration variables:
 
 ```
 $ heroku config:set S3_BUCKET_NAME=your_bucket_name
@@ -86,4 +86,4 @@ Contributing
 License
 -------
 
-**Selenium Test Panel App** is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+**Selenium Test Panel** is released under the [MIT License](http://www.opensource.org/licenses/MIT).
